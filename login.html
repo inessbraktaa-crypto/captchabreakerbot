@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+
+    <!-- navigation bar at the top -->
+    <nav class="top-nav">
+        <div class="logo">Secure<span>Auth</span></div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">Support</a>
+            <a href="#">Contact</a>
+            <a href="#" class="active">Login</a>
+        </div>
+    </nav>
+
+    <div class="main-wrapper">
+
+<!-- Center of the page -->
+    <div class="center-content">
+        <div class="card">
+            <h1>Login <span>Page</span></h1>
+            <p>Access to your secured space</p>
+        </div>
+
+
+     <div class="card">
+        <h1>Connexion</h1>
+
+        <form method="POST" action="/login">
+            
+            <label>Username :</label>
+            <input type="text" name="username" required> 
+
+            <label>Password :</label>
+            <input type="password" name="password" required>
+
+            <div style="text-align: center;"></div>
+            <button type="submit">Login</button>
+            </div>
+
+        </form>
+        </div>
+    </div>
+
+
+</body>
+</html>

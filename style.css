@@ -1,0 +1,388 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========== NAVIGATION ========== */
+.top-nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 0 60px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.logo span {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #4a5568;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.nav-links a:hover {
+    color: #667eea;
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.nav-links a.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+/* ========== LAYOUT PRINCIPAL ========== */
+.main-wrapper {
+    display: flex;
+    flex: 1;
+    align-items: stretch;
+    padding: 20px;
+    gap: 20px;
+    min-height: calc(100vh - 70px);
+}
+
+/* ========== BANNIÈRES LATÉRALES ========== */
+.side-banner {
+    width: 250px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    color: white;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.side-banner:hover {
+    transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.banner-content p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+/* ========== CONTENU CENTRAL ========== */
+.center-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* ========== CARTES ========== */
+.card {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    transition: transform 0.3s ease;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== EN-TÊTE DES CARTES ========== */
+.card h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 28px;
+    color: #2d3748;
+}
+
+.card h1 span {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.card > p {
+    text-align: center;
+    color: #718096;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+/* ========== FORMULAIRES ========== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-weight: 500;
+    color: #4a5568;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: inherit;
+}
+
+input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* ========== BOUTONS ========== */
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.button-refresh {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    width: auto;
+    padding: 10px 24px;
+    margin: 10px auto;
+}
+
+.button-logout {
+    background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+}
+
+/* ========== CAPTCHA ========== */
+.captcha-image {
+    text-align: center;
+    margin: 20px 0;
+    background: #f7fafc;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+}
+
+#captchaImage {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.refresh-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+/* ========== ALERTES ========== */
+.alert {
+    padding: 12px;
+    border-radius: 12px;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.alert-error {
+    background: #fed7d7;
+    color: #c53030;
+    border-left: 4px solid #c53030;
+}
+
+.alert-success {
+    background: #c6f6d5;
+    color: #276749;
+    border-left: 4px solid #276749;
+}
+
+/* ========== LIENS ========== */
+.logout-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #718096;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.logout-link:hover {
+    color: #667eea;
+}
+
+/* ========== INFOS SECRÈTES ========== */
+.secret-info {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 20px;
+    border: 2px solid #f59e0b;
+}
+
+.secret-info h3 {
+    color: #92400e;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.secret-code {
+    color: #92400e;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
+    word-break: break-all;
+}
+
+.secret-warning {
+    margin-top: 10px;
+    font-size: 11px;
+    color: #92400e;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+    .side-banner {
+        width: 200px;
+    }
+    
+    .top-nav {
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .side-banner {
+        display: none;
+    }
+    
+    .top-nav {
+        padding: 0 20px;
+    }
+    
+    .nav-links {
+        gap: 10px;
+    }
+    
+    .nav-links a {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+    
+    .card {
+        padding: 30px 20px;
+        max-width: 90%;
+    }
+    
+    .card h1 {
+        font-size: 24px;
+    }
+    
+    .center-content {
+        padding: 10px;
+    }
+    
+    .main-wrapper {
+        padding: 10px;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 22px;
+    }
+    
+    .card {
+        padding: 20px 15px;
+    }
+    
+    button {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    input {
+        padding: 10px 12px;
+    }
+}

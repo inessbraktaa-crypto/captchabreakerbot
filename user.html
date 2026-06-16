@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User - CAPTCHA</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="logo">Secure<span>Auth</span></div>
+        <div class="nav-links">
+            <a href="#"><help></a>
+        </div>
+    </nav>
+
+    <div class="main-wrapper">
+    <div class="center-content">
+            <div class="card">
+                <div class="header">
+                    <h1>CAPTCHA <span>verification</span></h1>
+                    <p>I am not a robot</p>
+                </div>
+
+        <!-- CAPTCHA image -->
+        <div class ="captcha-image">
+        <img id="captchaImage" src="/captcha" alt="CAPTCHA">
+        </div>
+
+        <!-- Refresh button -->
+        <div class="refresh-container">
+        <button type="button" class="button-refresh" onclick="refreshCaptcha()">Refresh</button>
+        </div>
+
+        <!-- Form -->
+        <form method="POST" action="/verify" id="captchaForm">
+            <input type="hidden" name="bot_behavior" id="bot_behavior" value="{}"> </input>
+            <input type="text" name="captcha_input" placeholder="put CAPTCHA" required>
+            <button type="submit">Verify</button>
+        </form>
+
+{% if error %}
+    <p style="color: red; font-weight: bold;">{{ error }}</p>
+{% endif %}
+
+{% if success %}
+    <p style="color: green; font-weight: bold;">{{ success }}</p>
+{% endif %}
+
+
+        <a href="/logout">Logout</a>
+    </div>
+
+<script>
+function refreshCaptcha() {
+    document.getElementById("captchaImage").src = "/captcha?" + new Date().getTime();
+}
+
+<!--testing:-->
+const _bd = { velocities:[], dirChanges:0, straight:0, eventCount:0,
+              _lp:null, _lt:null, _lv:null };
+ 
+document.addEventListener('mousemove', function(e) {
+    const now = performance.now();
+    _bd.eventCount++;
+    if (_bd._lp && _bd._lt) {
+        const dx = e.clientX - _bd._lp[0];
+        const dy = e.clientY - _bd._lp[1];
+        const d  = Math.sqrt(dx*dx + dy*dy);
+        const dt = now - _bd._lt;
+        if (dt > 0 && d > 1) {
+            _bd.velocities.push(d / dt);
+            const n = [dx/d, dy/d];
+            if (_bd._lv) {
+                const cos = _bd._lv[0]*n[0] + _bd._lv[1]*n[1];
+                if (cos < 0.8) _bd.dirChanges++;
+                if (Math.abs(_bd._lv[0]*n[1] - _bd._lv[1]*n[0]) < 0.05 && d > 8) _bd.straight++;
+            }
+            _bd._lv = n;
+        }
+    }
+    _bd._lp = [e.clientX, e.clientY];
+    _bd._lt = now;
+});
+ 
+document.getElementById('captchaForm').addEventListener('submit', function() {
+    document.getElementById('bot_behavior').value = JSON.stringify({
+        velocities:  _bd.velocities,
+        dir_changes: _bd.dirChanges,
+        straight:    _bd.straight,
+        event_count: _bd.eventCount
+    });
+});
+
+
+</script>
+
+</body>
+</html>
